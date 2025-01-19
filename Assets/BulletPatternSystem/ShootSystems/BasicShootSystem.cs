@@ -1,8 +1,11 @@
 using UnityEngine;
 
-public class FireSystem : MonoBehaviour
+/// <summary>
+/// Shoots one bullet style
+/// </summary>
+public class BasicShootSystem : MonoBehaviour
 {
-    [SerializeField] Ammo1 AmmoPrefab;
+    [SerializeField] Ammo AmmoPrefab;
     [SerializeField] Transform FirePos;
 
     [SerializeField] ShootSystemData systemStats;
@@ -15,13 +18,12 @@ public class FireSystem : MonoBehaviour
     bool HaveAmmo => currentAmmoCount > 0;
     bool HaveMag => currentMagazineCount > 0;
 
-
     void Start() => OnValidate();
     void OnValidate()
     {
         currentMagazineCount = systemStats.MagazineCount;
         currentAmmoCount = systemStats.MagazineCapacity;
-        fireTimer = 0;
+        fireTimer = Mathf.Infinity;
         reloadTimer = 0;
     }
 
@@ -46,7 +48,7 @@ public class FireSystem : MonoBehaviour
 
         if (fireTimer >= systemStats.ShootDelay)
         {
-            fireTimer -= systemStats.ShootDelay;
+            fireTimer = 0;
 
             Fire();
         }
@@ -55,7 +57,8 @@ public class FireSystem : MonoBehaviour
     {
         FirePos.GetPositionAndRotation(out Vector3 pos,out Quaternion rot);
         var ammo = Instantiate(AmmoPrefab,pos,rot);
-        ammo.Setup();
+
+        ammo.Setup(BulletPatterns.TestPattern);
 
         currentAmmoCount--;
     }
@@ -78,8 +81,8 @@ public class FireSystem : MonoBehaviour
     }
     
     // Debug
-    void OnDrawGizmos()
-    {
+    //void OnDrawGizmos()
+    //{
 
-    }
+    //}
 }

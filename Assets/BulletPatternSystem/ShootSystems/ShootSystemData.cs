@@ -1,7 +1,7 @@
+
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ShootSystemData", menuName = "ScriptableObjects/ShootSystemData")]
-
 public class ShootSystemData : ScriptableObject
 {
     public int MagazineCount = 3; // How many times can this weapon reload

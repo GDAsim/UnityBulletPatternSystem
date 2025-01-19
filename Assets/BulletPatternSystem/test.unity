@@ -465,7 +465,7 @@ GameObject:
   - component: {fileID: 1151812425}
   - component: {fileID: 1151812429}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyShootSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -553,14 +553,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151812424}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1387969582}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &1151812429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,10 +573,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1edf65d097f3844799a89b9db827c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AmmoPrefab: {fileID: 8295264336154564726, guid: 76884936a013d1943b6453faf124d011,
-    type: 3}
+  AmmoPrefab: {fileID: 8295264336154564726, guid: 76884936a013d1943b6453faf124d011, type: 3}
   FirePos: {fileID: 1387969582}
-  systemStats: {fileID: 11400000, guid: 8e330ffb1303e32428a7a090391669e2, type: 2}
+  systemStats: {fileID: 11400000, guid: e7e05c255e4b3694b91eb7355b16f833, type: 2}
 --- !u!1 &1387969581
 GameObject:
   m_ObjectHideFlags: 0
