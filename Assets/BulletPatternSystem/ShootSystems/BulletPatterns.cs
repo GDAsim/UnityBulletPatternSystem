@@ -2,14 +2,15 @@ using System;
 
 public static class BulletPatterns
 {
-    public static TransformAction[] TestPattern => new TransformAction[4]
+    public static TransformAction[] StraightPattern(float actionSpeed) => new TransformAction[4]
     {
         new TransformAction
         {
             Duration = MathF.PI,
             StartTimer = 0,
 
-            Action = TransformAction.SineMove1x,
+            Action = TransformAction.SineMove,
+            ActionSpeed = actionSpeed,
             IsDeltaAction = true
         },
         new TransformAction
@@ -17,7 +18,8 @@ public static class BulletPatterns
             Duration = MathF.PI,
             StartTimer = MathF.PI,
 
-            Action = TransformAction.SineMove1x,
+            Action = TransformAction.SineMove,
+            ActionSpeed = actionSpeed,
             IsDeltaAction = true
         },
         new TransformAction
@@ -25,14 +27,18 @@ public static class BulletPatterns
             Duration = 2,
             StartTimer = 2,
 
-            Action = TransformAction.MoveForward1x
+            Action = TransformAction.MoveForward,
+            ActionSpeed = actionSpeed,
+            IsDeltaAction = false,
         },
         new TransformAction
         {
             Duration = 2,
             StartTimer = 2,
 
-            Action = TransformAction.MoveForward1x
+            Action = TransformAction.MoveForward,
+            ActionSpeed = actionSpeed,
+            IsDeltaAction = false,
         },
     };
 }

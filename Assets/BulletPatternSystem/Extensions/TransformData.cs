@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
@@ -8,11 +7,14 @@ public struct TransformData
     public Vector3 Position;
     public Quaternion Rotation;
     public Vector3 Scale;
+    public float Speed;
 
-    public TransformData(Transform transform)
+    public TransformData(Transform transform, float speed = 1)
     {
         transform.GetLocalPositionAndRotation(out Position, out Rotation);
         Scale = transform.localScale;
+
+        Speed = speed;
     }
 
     //public void 

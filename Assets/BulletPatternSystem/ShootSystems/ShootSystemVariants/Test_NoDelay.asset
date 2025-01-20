@@ -15,4 +15,4 @@ MonoBehaviour:
   MagazineCount: 2147483647
   MagazineCapacity: 2147483647
   ReloadDelay: 1
-  ShootDelay: 222
+  ShootDelay: -504.1

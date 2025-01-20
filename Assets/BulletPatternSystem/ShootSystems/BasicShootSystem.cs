@@ -35,7 +35,7 @@ public class BasicShootSystem : MonoBehaviour
         }
         else
         {
-            if(HaveMag)
+            if (HaveMag)
             {
                 AttemptReload();
             }
@@ -55,10 +55,10 @@ public class BasicShootSystem : MonoBehaviour
     }
     void Fire()
     {
-        FirePos.GetPositionAndRotation(out Vector3 pos,out Quaternion rot);
-        var ammo = Instantiate(AmmoPrefab,pos,rot);
+        FirePos.GetPositionAndRotation(out Vector3 pos, out Quaternion rot);
+        var ammo = Instantiate(AmmoPrefab, pos, rot);
 
-        ammo.Setup(BulletPatterns.TestPattern);
+        ammo.Setup(BulletPatterns.StraightPattern(2));
 
         currentAmmoCount--;
     }
@@ -79,7 +79,7 @@ public class BasicShootSystem : MonoBehaviour
         currentMagazineCount--;
         currentAmmoCount = systemStats.MagazineCapacity;
     }
-    
+
     // Debug
     //void OnDrawGizmos()
     //{
