@@ -1,6 +1,6 @@
 using System;
 
-public static class BulletPatterns
+public static partial class BulletPatterns
 {
     public static TransformAction[] StraightPattern(float actionSpeed) => new TransformAction[4]
     {

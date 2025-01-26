@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf7fad5ead327334ea86b83509afbc2a, type: 3}
-  m_Name: Test_NoDelay
+  m_Name: Test_Normal
   m_EditorClassIdentifier: 
-  MagazineCount: 2147483647
-  MagazineCapacity: 2147483647
+  MagazineCount: 10
+  MagazineCapacity: 3
   ReloadDelay: 1
-  ShootDelay: -504.1
+  ShootDelay: 0.2
