@@ -38,4 +38,12 @@ public class Ammo : MonoBehaviour
         currentAction.DoTransformAction(dt);
         moveTimer -= dt;
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }

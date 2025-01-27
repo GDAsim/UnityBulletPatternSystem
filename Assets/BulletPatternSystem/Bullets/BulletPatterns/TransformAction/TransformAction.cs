@@ -4,6 +4,10 @@ using UnityEngine;
 public partial struct TransformAction
 {
     public Func<TransformData, float, float, TransformData> Action;
+    
+    /// <summary>
+    /// Used when the Performing Certain Action has a StartTimer != 0
+    /// </summary>
     public bool IsDeltaAction;
 
     /// <summary>

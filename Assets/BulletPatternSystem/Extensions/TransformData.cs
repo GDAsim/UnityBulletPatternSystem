@@ -28,14 +28,13 @@ public struct TransformData
     public void AddTo(Transform transform)
     {
         transform.localPosition += Position;
-        transform.localRotation *= Rotation;
+        transform.localRotation = Rotation * transform.localRotation;
         transform.localScale += Scale;
     }
 
     public static TransformData operator -(TransformData left, TransformData right)
     {
         left.Position -= right.Position;
-        //left.Rotation = right.Rotation * Quaternion.Inverse(left.Rotation);
         left.Rotation = left.Rotation * Quaternion.Inverse(right.Rotation);
         left.Scale -= right.Scale;
         return left;
