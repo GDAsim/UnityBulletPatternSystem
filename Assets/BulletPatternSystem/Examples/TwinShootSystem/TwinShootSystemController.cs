@@ -15,7 +15,7 @@ public class TwinShootSystemController : MonoBehaviour
     {
         if(shootmode == ShootMode.Normal)
         {
-            var bulletPattern = BulletPatterns.StraightPattern(ShootPower);
+            var bulletPattern = BulletPatterns.Straight(ShootPower);
 
             var stats = Instantiate(BaseShootSystemStats);
             RightGun.Setup(bulletPattern, stats);
@@ -23,7 +23,7 @@ public class TwinShootSystemController : MonoBehaviour
         }
         else if (shootmode == ShootMode.Cycle)
         {
-            var bulletPattern = BulletPatterns.StraightPattern(ShootPower);
+            var bulletPattern = BulletPatterns.Straight(ShootPower);
 
             var stats = Instantiate(BaseShootSystemStats);
 
@@ -35,15 +35,13 @@ public class TwinShootSystemController : MonoBehaviour
         }
         else if (shootmode == ShootMode.Helix)
         {
-            var bulletPattern = BulletPatterns.SinePattern(ShootPower, Vector3.up, 0.5f);
+            var LeftbulletPattern = BulletPatterns.Sine(ShootPower, Vector3.left, 0.2f);
+            var RightbulletPattern = BulletPatterns.Sine(ShootPower, Vector3.right, 0.2f);
 
             var stats = Instantiate(BaseShootSystemStats);
 
-            var leftGunShootDelay = stats.ShootDelay;
-            stats.ShootDelay *= 2;
-
-            RightGun.Setup(bulletPattern, stats);
-            LeftGun.Setup(bulletPattern, stats, leftGunShootDelay);
+            RightGun.Setup(RightbulletPattern, stats);
+            LeftGun.Setup(LeftbulletPattern, stats);
         }
     }
 }

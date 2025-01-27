@@ -990,7 +990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a705b06cded6e62419a2f9e49ce96b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AmmoPrefab: {fileID: 8295264336154564726, guid: 76884936a013d1943b6453faf124d011, type: 3}
+  AmmoPrefab: {fileID: 8295264336154564726, guid: a43aff66425486d4d8ad9eb1e1318181, type: 3}
   FirePos: {fileID: 1387969582}
   systemStats: {fileID: 11400000, guid: c1f1dbe925cf3da4fadaebab78ad4729, type: 2}
   ShootPower: 20
@@ -1264,7 +1264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a705b06cded6e62419a2f9e49ce96b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AmmoPrefab: {fileID: 8295264336154564726, guid: 76884936a013d1943b6453faf124d011, type: 3}
+  AmmoPrefab: {fileID: 8295264336154564726, guid: a43aff66425486d4d8ad9eb1e1318181, type: 3}
   FirePos: {fileID: 1450099821}
   systemStats: {fileID: 11400000, guid: c1f1dbe925cf3da4fadaebab78ad4729, type: 2}
   ShootPower: 20
@@ -1567,7 +1567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a705b06cded6e62419a2f9e49ce96b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AmmoPrefab: {fileID: 8295264336154564726, guid: 76884936a013d1943b6453faf124d011, type: 3}
+  AmmoPrefab: {fileID: 8295264336154564726, guid: a43aff66425486d4d8ad9eb1e1318181, type: 3}
   FirePos: {fileID: 1830922523}
   systemStats: {fileID: 11400000, guid: c1f1dbe925cf3da4fadaebab78ad4729, type: 2}
   ShootPower: 20
@@ -1701,7 +1701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a705b06cded6e62419a2f9e49ce96b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AmmoPrefab: {fileID: 8295264336154564726, guid: 76884936a013d1943b6453faf124d011, type: 3}
+  AmmoPrefab: {fileID: 8295264336154564726, guid: a43aff66425486d4d8ad9eb1e1318181, type: 3}
   FirePos: {fileID: 1208703842}
   systemStats: {fileID: 11400000, guid: c1f1dbe925cf3da4fadaebab78ad4729, type: 2}
   ShootPower: 20

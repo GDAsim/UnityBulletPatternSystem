@@ -58,7 +58,7 @@ public class BasicShootSystem : MonoBehaviour
         FirePos.GetPositionAndRotation(out Vector3 pos, out Quaternion rot);
         var ammo = Instantiate(AmmoPrefab, pos, rot);
 
-        ammo.Setup(BulletPatterns.StraightPattern(2));
+        ammo.Setup(BulletPatterns.Straight(2));
 
         currentAmmoCount--;
     }
