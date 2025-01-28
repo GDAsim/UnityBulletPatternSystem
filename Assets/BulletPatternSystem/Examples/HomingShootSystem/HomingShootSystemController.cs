@@ -1,21 +1,17 @@
-using System;
 using UnityEngine;
 
-/// <summary>
-/// Shoots one bullet style
-/// </summary>
-public class HomingShootSystem : MonoBehaviour
+public class HomingShootSystemController : MonoBehaviour
 {
-    [SerializeField] Ammo AmmoPrefab;
-    [SerializeField] Transform FirePos;
-    [SerializeField] ShootSystemData systemStats;
+    [SerializeField] ShootSystemData BaseShootSystemStats;
+    [SerializeField] HomingType homingType;
+
+    [SerializeField] ShootSystem Gun;
 
     [Header("Shoot Properties")]
     [SerializeField] float ShootPower = 2;
 
     [Header("Homing Properties")]
     [SerializeField] Transform homingTarget;
-    [SerializeField] HomingType homingType;
     [SerializeField] float HomingRate = 15f; // Homing In Degrees per second
 
     [Header("Distance Proximity Properties")]
@@ -30,59 +26,11 @@ public class HomingShootSystem : MonoBehaviour
 
     enum HomingType { Simple, DistanceProximity, LimitedProximity, Accelerated }
 
-    int currentMagazineCount;
-    int currentAmmoCount;
-    float fireTimer;
-    float reloadTimer;
-
-    bool HaveAmmo => currentAmmoCount > 0;
-    bool HaveMag => currentMagazineCount > 0;
-
-    void Start() => OnValidate();
-    void OnValidate()
+    void Start()
     {
-        currentMagazineCount = systemStats.MagazineCount;
-        currentAmmoCount = systemStats.MagazineCapacity;
-        fireTimer = Mathf.Infinity;
-        reloadTimer = 0;
-    }
-
-    void Update()
-    {
-        if (HaveAmmo)
-        {
-            AttemptShoot();
-        }
-        else
-        {
-            if (HaveMag)
-            {
-                AttemptReload();
-            }
-        }
-    }
-
-    void AttemptShoot()
-    {
-        fireTimer += Time.deltaTime;
-
-        if (fireTimer >= systemStats.ShootDelay)
-        {
-            fireTimer = 0;
-
-            Fire();
-        }
-    }
-    void Fire()
-    {
-        FirePos.GetPositionAndRotation(out Vector3 pos, out Quaternion rot);
-        var ammo = Instantiate(AmmoPrefab, pos, rot);
-
-        // TOUPDATE: Define Pattern Here
-        TransformAction[] pattern = null;
         if (homingType == HomingType.Simple)
         {
-            pattern = new TransformAction[1]
+            var bulletPattern = new TransformAction[1]
             {
                 new TransformAction
                 {
@@ -94,10 +42,13 @@ public class HomingShootSystem : MonoBehaviour
                     IsDeltaAction = true
                 },
             };
+
+            var stats = Instantiate(BaseShootSystemStats);
+            Gun.Setup(bulletPattern, stats);
         }
         else if (homingType == HomingType.DistanceProximity)
         {
-            pattern = new TransformAction[1]
+            var bulletPattern = new TransformAction[1]
             {
                 new TransformAction
                 {
@@ -109,10 +60,13 @@ public class HomingShootSystem : MonoBehaviour
                     IsDeltaAction = true
                 },
             };
+
+            var stats = Instantiate(BaseShootSystemStats);
+            Gun.Setup(bulletPattern, stats);
         }
         else if (homingType == HomingType.LimitedProximity)
         {
-            pattern = new TransformAction[1]
+            var bulletPattern = new TransformAction[1]
             {
                 new TransformAction
                 {
@@ -124,10 +78,13 @@ public class HomingShootSystem : MonoBehaviour
                     IsDeltaAction = true
                 },
             };
+
+            var stats = Instantiate(BaseShootSystemStats);
+            Gun.Setup(bulletPattern, stats);
         }
         else if (homingType == HomingType.Accelerated)
         {
-            pattern = new TransformAction[1]
+            var bulletPattern = new TransformAction[1]
             {
                 new TransformAction
                 {
@@ -139,28 +96,10 @@ public class HomingShootSystem : MonoBehaviour
                     IsDeltaAction = true
                 },
             };
+
+            var stats = Instantiate(BaseShootSystemStats);
+            Gun.Setup(bulletPattern, stats);
         }
-
-        ammo.Setup(pattern);
-
-        currentAmmoCount--;
-    }
-
-    void AttemptReload()
-    {
-        reloadTimer += Time.deltaTime;
-
-        if (reloadTimer >= systemStats.ReloadDelay)
-        {
-            reloadTimer -= systemStats.ReloadDelay;
-
-            Reload();
-        }
-    }
-    void Reload()
-    {
-        currentMagazineCount--;
-        currentAmmoCount = systemStats.MagazineCapacity;
     }
 
     /// <summary>
@@ -183,7 +122,7 @@ public class HomingShootSystem : MonoBehaviour
 
         return startData;
     }
-    
+
     /// <summary>
     /// Distance Proximity Homing
     /// 1. Rotate towards the target by a small amount when within proximity radius
