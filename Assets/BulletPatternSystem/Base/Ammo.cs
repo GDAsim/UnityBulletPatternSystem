@@ -6,7 +6,7 @@ public class Ammo : MonoBehaviour
     int currentIndex = 0;
 
     TransformAction currentAction;
-    float moveTimer = 0;
+    float actionTimer = 0;
 
     public void Setup(TransformAction[] patterns)
     {
@@ -15,7 +15,7 @@ public class Ammo : MonoBehaviour
 
     void Update()
     {
-        if (patterns.Length == 0)
+        if (patterns == null || patterns.Length == 0)
         {
             Debug.LogWarning("No Pattern Set", this);
             return;
@@ -23,20 +23,20 @@ public class Ammo : MonoBehaviour
 
         var dt = Time.deltaTime;
 
-        if (moveTimer <= 0)
+        if (actionTimer <= 0)
         {
             currentAction.EndAction();
 
             currentAction = patterns[currentIndex];
             currentAction.GetReady(transform);
-            moveTimer = currentAction.Duration;
+            actionTimer = currentAction.Duration;
 
             currentIndex++;
             if(currentIndex == patterns.Length) currentIndex = 0;
         }
 
         currentAction.DoTransformAction(dt);
-        moveTimer -= dt;
+        actionTimer -= dt;
     }
 
     void OnTriggerEnter(Collider other)

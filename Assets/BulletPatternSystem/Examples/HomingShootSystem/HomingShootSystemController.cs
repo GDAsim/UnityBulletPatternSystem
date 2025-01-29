@@ -44,7 +44,7 @@ public class HomingShootSystemController : MonoBehaviour
             };
 
             var stats = Instantiate(BaseShootSystemStats);
-            Gun.Setup(bulletPattern, stats);
+            Gun.SetupShoot(bulletPattern, stats);
         }
         else if (homingType == HomingType.DistanceProximity)
         {
@@ -62,7 +62,7 @@ public class HomingShootSystemController : MonoBehaviour
             };
 
             var stats = Instantiate(BaseShootSystemStats);
-            Gun.Setup(bulletPattern, stats);
+            Gun.SetupShoot(bulletPattern, stats);
         }
         else if (homingType == HomingType.LimitedProximity)
         {
@@ -80,7 +80,7 @@ public class HomingShootSystemController : MonoBehaviour
             };
 
             var stats = Instantiate(BaseShootSystemStats);
-            Gun.Setup(bulletPattern, stats);
+            Gun.SetupShoot(bulletPattern, stats);
         }
         else if (homingType == HomingType.Accelerated)
         {
@@ -98,7 +98,7 @@ public class HomingShootSystemController : MonoBehaviour
             };
 
             var stats = Instantiate(BaseShootSystemStats);
-            Gun.Setup(bulletPattern, stats);
+            Gun.SetupShoot(bulletPattern, stats);
         }
     }
 
