@@ -6,7 +6,7 @@ public class Ammo : MonoBehaviour
     int currentIndex = 0;
 
     TransformAction currentAction;
-    float actionTimer = 0;
+    float actionTimer = 1;
 
     public void Setup(TransformAction[] patterns)
     {
