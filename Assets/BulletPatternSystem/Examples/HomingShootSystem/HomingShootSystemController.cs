@@ -30,7 +30,7 @@ public class HomingShootSystemController : MonoBehaviour
     {
         if (homingType == HomingType.Simple)
         {
-            var bulletPattern = new TransformAction[1]
+            var bulletPattern = new IAction[1]
             {
                 new TransformAction
                 {
@@ -48,7 +48,7 @@ public class HomingShootSystemController : MonoBehaviour
         }
         else if (homingType == HomingType.DistanceProximity)
         {
-            var bulletPattern = new TransformAction[1]
+            var bulletPattern = new IAction[1]
             {
                 new TransformAction
                 {
@@ -66,7 +66,7 @@ public class HomingShootSystemController : MonoBehaviour
         }
         else if (homingType == HomingType.LimitedProximity)
         {
-            var bulletPattern = new TransformAction[1]
+            var bulletPattern = new IAction[1]
             {
                 new TransformAction
                 {
@@ -84,7 +84,7 @@ public class HomingShootSystemController : MonoBehaviour
         }
         else if (homingType == HomingType.Accelerated)
         {
-            var bulletPattern = new TransformAction[1]
+            var bulletPattern = new IAction[1]
             {
                 new TransformAction
                 {

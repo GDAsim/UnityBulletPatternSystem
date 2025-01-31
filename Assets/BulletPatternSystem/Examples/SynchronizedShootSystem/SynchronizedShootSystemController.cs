@@ -69,71 +69,75 @@ public class SynchronizedShootSystemController : MonoBehaviour
         }
         else if (snycType == SyncType.BulletMoveSync)
         {
-            //var systemPattern = new TransformAction[4]
-            //{
-            //    new TransformAction
-            //    {
-            //        Duration = BaseShootSystemStats.ShootDelay,
-            //        StartTimer = 0,
+            var systemPattern = new TransformAction[4]
+            {
+                new TransformAction
+                {
+                    Duration = BaseShootSystemStats.ShootDelay,
+                    StartTimer = 0,
 
-            //        Action = TranslateMove1,
-            //        ActionSpeed = ShootPower,
-            //        IsDeltaAction = false
-            //    },
-            //    new TransformAction
-            //    {
-            //        Duration = BaseShootSystemStats.ShootDelay,
-            //        StartTimer = 0,
+                    Action = TranslateMove1,
+                    ActionSpeed = ShootPower,
+                    IsDeltaAction = false
+                },
+                new TransformAction
+                {
+                    Duration = BaseShootSystemStats.ShootDelay,
+                    StartTimer = 0,
 
-            //        Action = TranslateMove2,
-            //        ActionSpeed = ShootPower,
-            //        IsDeltaAction = false
-            //    },
-            //    new TransformAction
-            //    {
-            //        Duration = BaseShootSystemStats.ShootDelay,
-            //        StartTimer = 0,
+                    Action = TranslateMove2,
+                    ActionSpeed = ShootPower,
+                    IsDeltaAction = false
+                },
+                new TransformAction
+                {
+                    Duration = BaseShootSystemStats.ShootDelay,
+                    StartTimer = 0,
 
-            //        Action = TranslateMove3,
-            //        ActionSpeed = ShootPower,
-            //        IsDeltaAction = false
-            //    },
-            //    new TransformAction
-            //    {
-            //        Duration = BaseShootSystemStats.ShootDelay,
-            //        StartTimer = 0,
+                    Action = TranslateMove3,
+                    ActionSpeed = ShootPower,
+                    IsDeltaAction = false
+                },
+                new TransformAction
+                {
+                    Duration = BaseShootSystemStats.ShootDelay,
+                    StartTimer = 0,
 
-            //        Action = TranslateMove4,
-            //        ActionSpeed = ShootPower,
-            //        IsDeltaAction = false
-            //    },
-            //};
-            //Gun.SetupPreShoot(systemPattern);
+                    Action = TranslateMove4,
+                    ActionSpeed = ShootPower,
+                    IsDeltaAction = false
+                },
+            };
+            Gun.SetupPreShoot(systemPattern);
 
-            //var bulletPattern = new TransformAction[2]
-            //{
-            //    new TransformAction
-            //    {
-            //        Duration = 1,
-            //        StartTimer = 0,
+            var bulletPattern = new IAction[3]
+            {
+                new DelayAction
+                {
+                    DelayUntil = Has4ShootCycleEnd
+                },
+                new TransformAction
+                {
+                    Duration = 9999,
+                    StartTimer = 0,
 
-            //        Action = DelayAction
-            //        ActionSpeed = ShootPower,
-            //        IsDeltaAction = true,
-            //    },
-            //    new TransformAction
-            //    {
-            //        Duration = 9999,
-            //        StartTimer = 0,
-
-            //        Action = TransformAction.MoveForward,
-            //        ActionSpeed = ShootPower,
-            //        IsDeltaAction = true,
-            //    },
-            //};
-            //var stats = Instantiate(BaseShootSystemStats);
-            //Gun.SetupShoot(bulletPattern, stats);
+                    Action = TransformAction.MoveForward,
+                    ActionSpeed = ShootPower,
+                    IsDeltaAction = true,
+                },
+                new DelayAction
+                {
+                    Duration = 0.1f
+                },
+            };
+            var stats = Instantiate(BaseShootSystemStats);
+            Gun.SetupShoot(bulletPattern, stats);
         }
+    }
+
+    bool Has4ShootCycleEnd()
+    {
+        return Gun.TotalShootCount % 4 == 0;
     }
 
     TransformData TranslateMove1(TransformData startData, float speed, float time)
@@ -163,7 +167,6 @@ public class SynchronizedShootSystemController : MonoBehaviour
         else lerpTime = time / BaseShootSystemStats.ShootDelay;
 
         startData.Position = Vector3.Lerp(startData.Position, Pos3.localPosition, lerpTime);
-
 
         return startData;
     }

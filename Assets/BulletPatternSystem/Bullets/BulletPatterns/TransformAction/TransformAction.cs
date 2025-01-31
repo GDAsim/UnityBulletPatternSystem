@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public partial struct TransformAction
+public partial struct TransformAction : IAction
 {
     public Func<TransformData, float, float, TransformData> Action;
     
@@ -10,30 +10,25 @@ public partial struct TransformAction
     /// </summary>
     public bool IsDeltaAction;
 
-    /// <summary>
-    /// How Long To Run the Action
-    /// </summary>
-    public float Duration;
-
-    /// <summary>
-    /// Base Speed Agument To Tell Action how fast to run
-    /// </summary>
-    public float ActionSpeed;
-
-    /// <summary>
-    /// Start the timer with a value. Used for certain Action
-    /// </summary>
-    public float StartTimer;
-
     Transform transform;
     TransformData startData;
     TransformData prevData;
     float timer;
 
+    public float Duration;
+    public float ActionSpeed;
+    public float StartTimer;
+
+    #region Interface
+    float IAction.Duration { get => Duration;}
+    float IAction.ActionSpeed { get => ActionSpeed; }
+    float IAction.StartTimer { get => StartTimer; }
+    #endregion
+
     /// <summary>
     /// Prep Function - Call Once Before Update
     /// </summary>
-    public void GetReady(Transform transform)
+    public void ReadyAction(Transform transform)
     {
         this.transform = transform;
 
@@ -51,7 +46,7 @@ public partial struct TransformAction
     /// Update Function
     /// Delta time is required in case for a custom time implementation
     /// </summary>
-    public void DoTransformAction(float deltatime)
+    public void DoAction(float deltatime)
     {
         timer += deltatime;
 
@@ -70,9 +65,6 @@ public partial struct TransformAction
         prevData = transformData;
     }
 
-    /// <summary>
-    /// Clean Up
-    /// </summary>
     public void EndAction()
     {
         if (Action == null) return;

@@ -1098,7 +1098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BaseShootSystemStats: {fileID: 11400000, guid: f1a1561f1c726ac46a532307999d416c, type: 2}
-  homingType: 0
+  snycType: 1
   Gun: {fileID: 5763387568809429684}
   ShootPower: 2
   Pos1: {fileID: 1499841651}

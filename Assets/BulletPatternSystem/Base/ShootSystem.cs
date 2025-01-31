@@ -10,10 +10,11 @@ public class ShootSystem : MonoBehaviour
 
     int currentMagazineCount;
     int currentAmmoCount;
-    float fireTimer;
+    float shootTimer;
     float reloadTimer;
     bool HaveAmmo => currentAmmoCount > 0;
     bool HaveMag => currentMagazineCount > 0;
+    public int TotalShootCount { get; set; }
 
     TransformAction[] systemPattern;
     int currentIndex = 0;
@@ -21,7 +22,7 @@ public class ShootSystem : MonoBehaviour
     TransformAction currentAction;
     float actionTimer = 0;
 
-    TransformAction[] bulletPattern;
+    IAction[] bulletPattern;
     Transform firetransform;
 
     public void SetupPreShoot(TransformAction[] systemPattern,
@@ -30,11 +31,11 @@ public class ShootSystem : MonoBehaviour
         this.systemPattern = systemPattern;
 
         currentAction = systemPattern[currentIndex++];
-        currentAction.GetReady(transform);
+        currentAction.ReadyAction(transform);
         actionTimer = -StartSystemDelay;
         if (currentIndex == systemPattern.Length) currentIndex = 0;
     }
-    public void SetupShoot(TransformAction[] bulletPattern, ShootSystemData shootStats,
+    public void SetupShoot(IAction[] bulletPattern, ShootSystemData shootStats,
         float StartShootDelay = 0)
     {
         this.bulletPattern = bulletPattern;
@@ -51,7 +52,7 @@ public class ShootSystem : MonoBehaviour
 
         currentMagazineCount = systemStats.MagazineCount;
         currentAmmoCount = systemStats.MagazineCapacity;
-        fireTimer = -StartShootDelay;
+        shootTimer = -StartShootDelay;
         reloadTimer = 0;
     }
 
@@ -88,22 +89,22 @@ public class ShootSystem : MonoBehaviour
             currentAction.EndAction();
 
             currentAction = systemPattern[currentIndex++];
-            currentAction.GetReady(transform);
+            currentAction.ReadyAction(transform);
             actionTimer = 0;
             if (currentIndex == systemPattern.Length) currentIndex = 0;
         }
 
-        currentAction.DoTransformAction(dt);
+        currentAction.DoAction(dt);
         actionTimer += dt;
     }
 
     void AttemptShoot()
     {
-        fireTimer += Time.deltaTime;
+        shootTimer += Time.deltaTime;
 
-        if (fireTimer >= systemStats.ShootDelay)
+        if (shootTimer >= systemStats.ShootDelay)
         {
-            fireTimer = 0;
+            shootTimer = 0;
 
             Fire();
         }
@@ -117,6 +118,8 @@ public class ShootSystem : MonoBehaviour
         ammo.Setup(bulletPattern);
 
         currentAmmoCount--;
+
+        TotalShootCount++;
     }
 
     void AttemptReload()

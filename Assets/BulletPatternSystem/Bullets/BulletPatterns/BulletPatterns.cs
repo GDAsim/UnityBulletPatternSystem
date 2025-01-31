@@ -6,7 +6,7 @@ using UnityEngine;
 /// </summary>
 public static class BulletPatterns
 {
-    public static TransformAction[] Straight(float actionSpeed) => new TransformAction[1]
+    public static IAction[] Straight(float actionSpeed) => new IAction[1]
     {
         new TransformAction
         {
@@ -18,9 +18,9 @@ public static class BulletPatterns
             IsDeltaAction = true,
         }
     };
-    public static TransformAction[] Sine(float actionSpeed, Vector3 axis, float height)
+    public static IAction[] Sine(float actionSpeed, Vector3 axis, float height)
     {
-        var actions = new TransformAction[1]
+        var actions = new IAction[1]
         {
             new TransformAction
             {
