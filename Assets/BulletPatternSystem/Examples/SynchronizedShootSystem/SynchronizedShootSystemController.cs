@@ -1,25 +1,180 @@
+using System;
 using UnityEngine;
 
 public class SynchronizedShootSystemController : MonoBehaviour
 {
     [SerializeField] ShootSystemData BaseShootSystemStats;
-    [SerializeField] HomingType homingType;
+    [SerializeField] SyncType snycType;
 
     [SerializeField] ShootSystem Gun;
 
     [Header("Shoot Properties")]
     [SerializeField] float ShootPower = 2;
 
-    enum HomingType { Simple }
+    [SerializeField] Transform Pos1;
+    [SerializeField] Transform Pos2;
+    [SerializeField] Transform Pos3;
+    [SerializeField] Transform Pos4;
 
-    void Start()
+    enum SyncType { ShootMoveSync, BulletMoveSync }
+
+    void Awake()
     {
-        if (homingType == HomingType.Simple)
+        if (snycType == SyncType.ShootMoveSync)
         {
-            var bulletPattern = BulletPatterns.Straight(ShootPower);
+            var systemPattern = new TransformAction[4]
+            {
+                new TransformAction
+                {
+                    Duration = BaseShootSystemStats.ShootDelay,
+                    StartTimer = 0,
 
+                    Action = TranslateMove1,
+                    ActionSpeed = ShootPower,
+                    IsDeltaAction = false
+                },
+                new TransformAction
+                {
+                    Duration = BaseShootSystemStats.ShootDelay,
+                    StartTimer = 0,
+
+                    Action = TranslateMove2,
+                    ActionSpeed = ShootPower,
+                    IsDeltaAction = false
+                },
+                new TransformAction
+                {
+                    Duration = BaseShootSystemStats.ShootDelay,
+                    StartTimer = 0,
+
+                    Action = TranslateMove3,
+                    ActionSpeed = ShootPower,
+                    IsDeltaAction = false
+                },
+                new TransformAction
+                {
+                    Duration = BaseShootSystemStats.ShootDelay,
+                    StartTimer = 0,
+
+                    Action = TranslateMove4,
+                    ActionSpeed = ShootPower,
+                    IsDeltaAction = false
+                },
+            };
+            Gun.SetupPreShoot(systemPattern);
+
+            var bulletPattern = BulletPatterns.Straight(ShootPower);
             var stats = Instantiate(BaseShootSystemStats);
             Gun.SetupShoot(bulletPattern, stats);
         }
+        else if (snycType == SyncType.BulletMoveSync)
+        {
+            //var systemPattern = new TransformAction[4]
+            //{
+            //    new TransformAction
+            //    {
+            //        Duration = BaseShootSystemStats.ShootDelay,
+            //        StartTimer = 0,
+
+            //        Action = TranslateMove1,
+            //        ActionSpeed = ShootPower,
+            //        IsDeltaAction = false
+            //    },
+            //    new TransformAction
+            //    {
+            //        Duration = BaseShootSystemStats.ShootDelay,
+            //        StartTimer = 0,
+
+            //        Action = TranslateMove2,
+            //        ActionSpeed = ShootPower,
+            //        IsDeltaAction = false
+            //    },
+            //    new TransformAction
+            //    {
+            //        Duration = BaseShootSystemStats.ShootDelay,
+            //        StartTimer = 0,
+
+            //        Action = TranslateMove3,
+            //        ActionSpeed = ShootPower,
+            //        IsDeltaAction = false
+            //    },
+            //    new TransformAction
+            //    {
+            //        Duration = BaseShootSystemStats.ShootDelay,
+            //        StartTimer = 0,
+
+            //        Action = TranslateMove4,
+            //        ActionSpeed = ShootPower,
+            //        IsDeltaAction = false
+            //    },
+            //};
+            //Gun.SetupPreShoot(systemPattern);
+
+            //var bulletPattern = new TransformAction[2]
+            //{
+            //    new TransformAction
+            //    {
+            //        Duration = 1,
+            //        StartTimer = 0,
+
+            //        Action = DelayAction
+            //        ActionSpeed = ShootPower,
+            //        IsDeltaAction = true,
+            //    },
+            //    new TransformAction
+            //    {
+            //        Duration = 9999,
+            //        StartTimer = 0,
+
+            //        Action = TransformAction.MoveForward,
+            //        ActionSpeed = ShootPower,
+            //        IsDeltaAction = true,
+            //    },
+            //};
+            //var stats = Instantiate(BaseShootSystemStats);
+            //Gun.SetupShoot(bulletPattern, stats);
+        }
+    }
+
+    TransformData TranslateMove1(TransformData startData, float speed, float time)
+    {
+        float lerpTime;
+        if (time == 0) lerpTime = 1;
+        else lerpTime = time / BaseShootSystemStats.ShootDelay;
+        
+        startData.Position = Vector3.Lerp(startData.Position, Pos1.localPosition, lerpTime);
+
+        return startData;
+    }
+    TransformData TranslateMove2(TransformData startData, float speed, float time)
+    {
+        float lerpTime;
+        if (time == 0) lerpTime = 1;
+        else lerpTime = time / BaseShootSystemStats.ShootDelay;
+
+        startData.Position = Vector3.Lerp(startData.Position, Pos2.localPosition, lerpTime);
+
+        return startData;
+    }
+    TransformData TranslateMove3(TransformData startData, float speed, float time)
+    {
+        float lerpTime;
+        if (time == 0) lerpTime = 1;
+        else lerpTime = time / BaseShootSystemStats.ShootDelay;
+
+        startData.Position = Vector3.Lerp(startData.Position, Pos3.localPosition, lerpTime);
+
+
+        return startData;
+    }
+    TransformData TranslateMove4(TransformData startData, float speed, float time)
+    {
+        float lerpTime;
+        if (time == 0) lerpTime = 1;
+        else lerpTime = time / BaseShootSystemStats.ShootDelay;
+
+        startData.Position = Vector3.Lerp(startData.Position, Pos4.localPosition, lerpTime);
+
+        return startData;
     }
 }

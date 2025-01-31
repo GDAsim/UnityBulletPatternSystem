@@ -6,11 +6,16 @@ public class Ammo : MonoBehaviour
     int currentIndex = 0;
 
     TransformAction currentAction;
-    float actionTimer = 1;
+    float actionTimer = 0;
 
     public void Setup(TransformAction[] patterns)
     {
         this.patterns = patterns;
+
+        currentAction = patterns[currentIndex++];
+        currentAction.GetReady(transform);
+        actionTimer = 0;
+        if (currentIndex == patterns.Length) currentIndex = 0;
     }
 
     void Update()
@@ -23,20 +28,18 @@ public class Ammo : MonoBehaviour
 
         var dt = Time.deltaTime;
 
-        if (actionTimer <= 0)
+        if (actionTimer >= currentAction.Duration)
         {
             currentAction.EndAction();
 
-            currentAction = patterns[currentIndex];
+            currentAction = patterns[currentIndex++];
             currentAction.GetReady(transform);
-            actionTimer = currentAction.Duration;
-
-            currentIndex++;
+            actionTimer = 0;
             if(currentIndex == patterns.Length) currentIndex = 0;
         }
 
         currentAction.DoTransformAction(dt);
-        actionTimer -= dt;
+        actionTimer += dt;
     }
 
     void OnTriggerEnter(Collider other)

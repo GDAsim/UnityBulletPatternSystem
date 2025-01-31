@@ -25,9 +25,14 @@ public class ShootSystem : MonoBehaviour
     Transform firetransform;
 
     public void SetupPreShoot(TransformAction[] systemPattern,
-    float StartSystemDelay = 0)
+        float StartSystemDelay = 0)
     {
+        this.systemPattern = systemPattern;
 
+        currentAction = systemPattern[currentIndex++];
+        currentAction.GetReady(transform);
+        actionTimer = -StartSystemDelay;
+        if (currentIndex == systemPattern.Length) currentIndex = 0;
     }
     public void SetupShoot(TransformAction[] bulletPattern, ShootSystemData shootStats,
         float StartShootDelay = 0)
@@ -46,14 +51,14 @@ public class ShootSystem : MonoBehaviour
 
         currentMagazineCount = systemStats.MagazineCount;
         currentAmmoCount = systemStats.MagazineCapacity;
-        fireTimer = systemStats.ReloadDelay - StartShootDelay;
+        fireTimer = -StartShootDelay;
         reloadTimer = 0;
     }
 
 
     void Update()
     {
-        PreFireAction();
+        PreShootAction();
 
         if (HaveAmmo)
         {
@@ -68,30 +73,28 @@ public class ShootSystem : MonoBehaviour
         }
     }
 
-    void PreFireAction()
+    void PreShootAction()
     {
         if (systemPattern == null || systemPattern.Length == 0)
         {
-            Debug.LogWarning("No Pattern Set", this);
+            Debug.LogWarning("No System Pattern Set", this);
             return;
         }
 
         var dt = Time.deltaTime;
 
-        if (actionTimer <= 0)
+        if (actionTimer >= currentAction.Duration && currentAmmoCount > 0)
         {
             currentAction.EndAction();
 
-            currentAction = systemPattern[currentIndex];
+            currentAction = systemPattern[currentIndex++];
             currentAction.GetReady(transform);
-            actionTimer = currentAction.Duration;
-
-            currentIndex++;
+            actionTimer = 0;
             if (currentIndex == systemPattern.Length) currentIndex = 0;
         }
 
         currentAction.DoTransformAction(dt);
-        actionTimer -= dt;
+        actionTimer += dt;
     }
 
     void AttemptShoot()

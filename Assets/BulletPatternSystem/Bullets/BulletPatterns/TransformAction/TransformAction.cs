@@ -37,7 +37,7 @@ public partial struct TransformAction
     {
         this.transform = transform;
 
-        transform.GetPositionAndRotation(out var pos, out var rot);
+        transform.GetLocalPositionAndRotation(out var pos, out var rot);
         var scale = transform.localScale;
 
         startData = new(transform);
