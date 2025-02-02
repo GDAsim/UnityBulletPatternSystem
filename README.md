@@ -7,7 +7,7 @@ Features:
    - Reload Delay
    - Shoot Delay
 2. Create Custom Bullet Path
-3. 
+3. sync bullet
 4. 
 5. Single Shoot System
 - Shoot Delay
