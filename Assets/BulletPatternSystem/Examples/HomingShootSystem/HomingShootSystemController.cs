@@ -35,7 +35,7 @@ public class HomingShootSystemController : MonoBehaviour
                 new TransformAction
                 {
                     Duration = 0.1f,
-                    StartTimer = 0,
+                    StartTime = 0,
 
                     Action = SimpleHoming,
                     ActionSpeed = ShootPower,
@@ -53,7 +53,7 @@ public class HomingShootSystemController : MonoBehaviour
                 new TransformAction
                 {
                     Duration = 0.1f,
-                    StartTimer = 0,
+                    StartTime = 0,
 
                     Action = DistanceProximityHoming,
                     ActionSpeed = ShootPower,
@@ -71,7 +71,7 @@ public class HomingShootSystemController : MonoBehaviour
                 new TransformAction
                 {
                     Duration = 0.1f,
-                    StartTimer = 0,
+                    StartTime = 0,
 
                     Action = LimitedProximityHoming,
                     ActionSpeed = ShootPower,
@@ -89,7 +89,7 @@ public class HomingShootSystemController : MonoBehaviour
                 new TransformAction
                 {
                     Duration = 0.1f,
-                    StartTimer = 0,
+                    StartTime = 0,
 
                     Action = AcceleratedHoming,
                     ActionSpeed = ShootPower,

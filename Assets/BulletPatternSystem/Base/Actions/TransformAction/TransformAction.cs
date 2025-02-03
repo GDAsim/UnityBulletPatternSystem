@@ -17,12 +17,12 @@ public partial struct TransformAction : IAction
 
     public float Duration;
     public float ActionSpeed;
-    public float StartTimer;
+    public float StartTime;
 
     #region Interface
     float IAction.Duration { get => Duration;}
     float IAction.ActionSpeed { get => ActionSpeed; }
-    float IAction.StartTimer { get => StartTimer; }
+    float IAction.StartTimer { get => StartTime; }
     #endregion
 
     /// <summary>
@@ -37,9 +37,9 @@ public partial struct TransformAction : IAction
 
         startData = new(transform);
 
-        timer = StartTimer;
+        timer = StartTime;
 
-        prevData = Action.Invoke(startData, ActionSpeed, StartTimer);
+        prevData = Action.Invoke(startData, ActionSpeed, StartTime);
     }
 
     /// <summary>
@@ -69,7 +69,7 @@ public partial struct TransformAction : IAction
     {
         if (Action == null) return;
 
-        var transformData = Action.Invoke(startData, ActionSpeed, StartTimer + Duration);
+        var transformData = Action.Invoke(startData, ActionSpeed, StartTime + Duration);
 
         if (IsDeltaAction)
         {

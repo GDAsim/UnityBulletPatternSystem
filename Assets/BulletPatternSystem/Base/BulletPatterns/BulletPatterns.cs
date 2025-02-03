@@ -11,7 +11,7 @@ public static class BulletPatterns
         new TransformAction
         {
             Duration = 1,
-            StartTimer = 0,
+            StartTime = 0,
 
             Action = TransformAction.MoveForward,
             ActionSpeed = actionSpeed,
@@ -25,7 +25,7 @@ public static class BulletPatterns
             new TransformAction
             {
                 Duration = MathF.PI * 2,
-                StartTimer = 0,
+                StartTime = 0,
 
                 Action = SineMove,
                 ActionSpeed = actionSpeed,

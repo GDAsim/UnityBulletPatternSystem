@@ -26,7 +26,7 @@ public class SynchronizedShootSystemController : MonoBehaviour
                 new TransformAction
                 {
                     Duration = BaseShootSystemStats.ShootDelay,
-                    StartTimer = 0,
+                    StartTime = 0,
 
                     Action = TranslateMove1,
                     ActionSpeed = ShootPower,
@@ -35,7 +35,7 @@ public class SynchronizedShootSystemController : MonoBehaviour
                 new TransformAction
                 {
                     Duration = BaseShootSystemStats.ShootDelay,
-                    StartTimer = 0,
+                    StartTime = 0,
 
                     Action = TranslateMove2,
                     ActionSpeed = ShootPower,
@@ -44,7 +44,7 @@ public class SynchronizedShootSystemController : MonoBehaviour
                 new TransformAction
                 {
                     Duration = BaseShootSystemStats.ShootDelay,
-                    StartTimer = 0,
+                    StartTime = 0,
 
                     Action = TranslateMove3,
                     ActionSpeed = ShootPower,
@@ -53,7 +53,7 @@ public class SynchronizedShootSystemController : MonoBehaviour
                 new TransformAction
                 {
                     Duration = BaseShootSystemStats.ShootDelay,
-                    StartTimer = 0,
+                    StartTime = 0,
 
                     Action = TranslateMove4,
                     ActionSpeed = ShootPower,
@@ -73,7 +73,7 @@ public class SynchronizedShootSystemController : MonoBehaviour
                 new TransformAction
                 {
                     Duration = BaseShootSystemStats.ShootDelay,
-                    StartTimer = 0,
+                    StartTime = 0,
 
                     Action = TranslateMove1,
                     ActionSpeed = ShootPower,
@@ -82,7 +82,7 @@ public class SynchronizedShootSystemController : MonoBehaviour
                 new TransformAction
                 {
                     Duration = BaseShootSystemStats.ShootDelay,
-                    StartTimer = 0,
+                    StartTime = 0,
 
                     Action = TranslateMove2,
                     ActionSpeed = ShootPower,
@@ -91,7 +91,7 @@ public class SynchronizedShootSystemController : MonoBehaviour
                 new TransformAction
                 {
                     Duration = BaseShootSystemStats.ShootDelay,
-                    StartTimer = 0,
+                    StartTime = 0,
 
                     Action = TranslateMove3,
                     ActionSpeed = ShootPower,
@@ -100,7 +100,7 @@ public class SynchronizedShootSystemController : MonoBehaviour
                 new TransformAction
                 {
                     Duration = BaseShootSystemStats.ShootDelay,
-                    StartTimer = 0,
+                    StartTime = 0,
 
                     Action = TranslateMove4,
                     ActionSpeed = ShootPower,
@@ -109,7 +109,7 @@ public class SynchronizedShootSystemController : MonoBehaviour
             };
             Gun.SetupPreShoot(systemPattern);
 
-            var bulletPattern = new IAction[3]
+            var bulletPattern = new IAction[2]
             {
                 new DelayAction
                 {
@@ -118,15 +118,11 @@ public class SynchronizedShootSystemController : MonoBehaviour
                 new TransformAction
                 {
                     Duration = 9999,
-                    StartTimer = 0,
+                    StartTime = 0,
 
                     Action = TransformAction.MoveForward,
                     ActionSpeed = ShootPower,
                     IsDeltaAction = true,
-                },
-                new DelayAction
-                {
-                    Duration = 0.1f
                 },
             };
             var stats = Instantiate(BaseShootSystemStats);
@@ -136,7 +132,7 @@ public class SynchronizedShootSystemController : MonoBehaviour
 
     bool Has4ShootCycleEnd()
     {
-        return Gun.TotalShootCount % 4 == 0;
+        return Gun.TotalShootCount % BaseShootSystemStats.MagazineCapacity == 0;
     }
 
     TransformData TranslateMove1(TransformData startData, float speed, float time)

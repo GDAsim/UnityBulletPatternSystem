@@ -55,8 +55,6 @@ public class ShootSystem : MonoBehaviour
         shootTimer = -StartShootDelay;
         reloadTimer = 0;
     }
-
-
     void Update()
     {
         PreShootAction();

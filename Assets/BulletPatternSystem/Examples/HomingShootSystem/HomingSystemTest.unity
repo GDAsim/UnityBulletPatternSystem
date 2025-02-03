@@ -224,7 +224,7 @@ Transform:
   m_GameObject: {fileID: 67336618}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: -40}
+  m_LocalPosition: {x: -3.24, y: 0, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 462245225}
   - component: {fileID: 462245223}
   m_Layer: 0
-  m_Name: AcceleratedHoming
+  m_Name: Homing (Accelerated)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -343,7 +343,7 @@ MonoBehaviour:
   homingTarget: {fileID: 1130582486}
   HomingRate: 15
   ProximityDistance: 50
-  LimitedProximityFactor: 1.1
+  LimitedProximityFactor: 1.5
   AcceleratedRadius: 50
   AccelerationMulti: 3
 --- !u!65 &462245225
@@ -429,7 +429,7 @@ Transform:
   m_GameObject: {fileID: 462245222}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 524351403}
   - component: {fileID: 524351407}
   m_Layer: 0
-  m_Name: Target (2)
+  m_Name: Target
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -651,7 +651,7 @@ Transform:
   m_GameObject: {fileID: 524351402}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 4, z: -40}
+  m_LocalPosition: {x: 5.13, y: 10, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -698,7 +698,7 @@ GameObject:
   - component: {fileID: 544923040}
   - component: {fileID: 544923038}
   m_Layer: 0
-  m_Name: LimitedProximityHoming
+  m_Name: Homing (Limited Proximity)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -723,7 +723,7 @@ MonoBehaviour:
   homingTarget: {fileID: 1049008132}
   HomingRate: 15
   ProximityDistance: 50
-  LimitedProximityFactor: 1.1
+  LimitedProximityFactor: 1.5
   AcceleratedRadius: 50
   AccelerationMulti: 3
 --- !u!65 &544923040
@@ -809,7 +809,7 @@ Transform:
   m_GameObject: {fileID: 544923037}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 6, z: 0}
+  m_LocalPosition: {x: 6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1396,7 +1396,7 @@ GameObject:
   - component: {fileID: 1049008129}
   - component: {fileID: 1049008133}
   m_Layer: 0
-  m_Name: Target (3)
+  m_Name: Target
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1487,7 +1487,7 @@ Transform:
   m_GameObject: {fileID: 1049008128}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 6, z: -40}
+  m_LocalPosition: {x: 9.69, y: 10, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1534,7 +1534,7 @@ GameObject:
   - component: {fileID: 1130582483}
   - component: {fileID: 1130582487}
   m_Layer: 0
-  m_Name: Target (1)
+  m_Name: Target
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1625,7 +1625,7 @@ Transform:
   m_GameObject: {fileID: 1130582482}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 2, z: -40}
+  m_LocalPosition: {x: 0.94, y: 0, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1782,7 +1782,7 @@ GameObject:
   - component: {fileID: 1607177269}
   - component: {fileID: 1607177267}
   m_Layer: 0
-  m_Name: DistanceProximityHoming
+  m_Name: Homing (Distance Proximity)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1807,7 +1807,7 @@ MonoBehaviour:
   homingTarget: {fileID: 524351406}
   HomingRate: 15
   ProximityDistance: 30
-  LimitedProximityFactor: 1.1
+  LimitedProximityFactor: 1.5
   AcceleratedRadius: 50
   AccelerationMulti: 3
 --- !u!65 &1607177269
@@ -1893,7 +1893,7 @@ Transform:
   m_GameObject: {fileID: 1607177266}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 4, z: 0}
+  m_LocalPosition: {x: 4, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2178,7 +2178,7 @@ GameObject:
   - component: {fileID: 6668679656315259048}
   - component: {fileID: 6696031618292158974}
   m_Layer: 0
-  m_Name: SimpleHoming
+  m_Name: Homing (Simple)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2257,7 +2257,7 @@ MonoBehaviour:
   homingTarget: {fileID: 67336622}
   HomingRate: 15
   ProximityDistance: 50
-  LimitedProximityFactor: 1.1
+  LimitedProximityFactor: 1.5
   AcceleratedRadius: 50
   AccelerationMulti: 3
 --- !u!4 &6870957675074910469
