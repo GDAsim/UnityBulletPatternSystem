@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f20d84a1d863dfd43a016998137bfb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseShootSystemStats: {fileID: 11400000, guid: c1f1dbe925cf3da4fadaebab78ad4729, type: 2}
+  BaseShootSystemStats: {fileID: 11400000, guid: daa08dddc1ac0d345be01ea3f0e8bb42, type: 2}
   ShootPower: 1
   shootmode: 2
   RightGun: {fileID: 580289797}
@@ -238,15 +238,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 90087925}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 2.061, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 580289798}
   - {fileID: 413219428}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &379773856
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,7 +1426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f20d84a1d863dfd43a016998137bfb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseShootSystemStats: {fileID: 11400000, guid: c1f1dbe925cf3da4fadaebab78ad4729, type: 2}
+  BaseShootSystemStats: {fileID: 11400000, guid: daa08dddc1ac0d345be01ea3f0e8bb42, type: 2}
   ShootPower: 1
   shootmode: 1
   RightGun: {fileID: 974763495}
@@ -1513,15 +1513,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1351906992}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 1.04, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 974763496}
   - {fileID: 441719515}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1379387818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1891,7 +1891,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907402122}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1899,7 +1899,7 @@ Transform:
   - {fileID: 827155167}
   - {fileID: 1579646589}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1907402127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1912,7 +1912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f20d84a1d863dfd43a016998137bfb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseShootSystemStats: {fileID: 11400000, guid: c1f1dbe925cf3da4fadaebab78ad4729, type: 2}
+  BaseShootSystemStats: {fileID: 11400000, guid: daa08dddc1ac0d345be01ea3f0e8bb42, type: 2}
   ShootPower: 1
   shootmode: 0
   RightGun: {fileID: 827155168}

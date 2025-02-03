@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Basic Transform Action - call back function for bullet patterns to update it's transform(data)
+/// Basic Transform Action
 /// </summary>
 public partial struct TransformAction
 {

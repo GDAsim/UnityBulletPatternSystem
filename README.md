@@ -12,3 +12,15 @@ Features:
 5. Single Shoot System
 - Shoot Delay
 - Reload Delay 
+
+
+Milestones:
+
+Level 1: Spawn & Move
+- Basic Spawning
+- Editor/Inspector Refrencing
+- Static Definition
+- Scriptable Object Definition
+- Fire Reload System
+
+Level 2:
