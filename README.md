@@ -13,6 +13,8 @@ Features:
 - Shoot Delay
 - Reload Delay 
 
+Works by using Sequential Action
+
 
 Milestones:
 
