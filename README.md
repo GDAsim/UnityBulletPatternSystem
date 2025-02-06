@@ -12,7 +12,7 @@ Features:
 5. Single Shoot System
 - Shoot Delay
 - Reload Delay 
-awsome 
+awsome huh
 
 
 
