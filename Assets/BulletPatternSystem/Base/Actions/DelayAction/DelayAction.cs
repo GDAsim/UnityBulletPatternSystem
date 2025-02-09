@@ -20,6 +20,7 @@ public struct DelayAction : IAction
     {
         
     }
+
     public void DoAction()
     {
         if (DelayUntil != null)
@@ -34,6 +35,7 @@ public struct DelayAction : IAction
             }
         }
     }
+
     public void EndAction()
     {
 

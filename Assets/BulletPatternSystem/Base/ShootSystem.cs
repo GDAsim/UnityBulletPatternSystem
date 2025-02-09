@@ -76,7 +76,7 @@ public class ShootSystem : MonoBehaviour
     {
         if (systemPattern == null || systemPattern.Length == 0)
         {
-            Debug.LogWarning("No System Pattern Set", this);
+            //Debug.LogWarning("No System Pattern Set", this);
             return;
         }
 

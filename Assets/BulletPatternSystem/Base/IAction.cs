@@ -21,5 +21,6 @@ public interface IAction
 public enum ActionTypes
 {
     TransformAction,
-    DelayAction
+    DelayAction,
+    SplitAction
 }

@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class Ammo : MonoBehaviour
 {
-    IAction[] patterns;
+    public IAction[] patterns { get; private set; }
     int currentIndex = 0;
 
     ActionTypes currentActionType;
     TransformAction currentTransformAction;
     DelayAction currentDelayAction;
+    SplitAction currentSplitAction;
 
     float currentActionTimer = 0;
 
@@ -26,7 +27,7 @@ public class Ammo : MonoBehaviour
     {
         if (patterns == null || patterns.Length == 0)
         {
-            Debug.LogWarning("No Pattern Set", this);
+            //Debug.LogWarning("No Pattern Set", this);
             return;
         }
 
@@ -56,6 +57,10 @@ public class Ammo : MonoBehaviour
                 currentDelayAction = action;
                 currentActionType = ActionTypes.DelayAction;
                 break;
+            case SplitAction action:
+                currentSplitAction = action;
+                currentActionType = ActionTypes.SplitAction;
+                break;
         }
 
         if (++currentIndex == patterns.Length) currentIndex = 0;
@@ -71,6 +76,9 @@ public class Ammo : MonoBehaviour
             case ActionTypes.DelayAction:
                 currentDelayAction.ReadyAction();
                 return;
+            case ActionTypes.SplitAction:
+                currentSplitAction.ReadyAction(this);
+                return;
         }
     }
     bool DoAction()
@@ -83,6 +91,9 @@ public class Ammo : MonoBehaviour
             case ActionTypes.DelayAction:
                 currentDelayAction.DoAction();
                 return currentActionTimer >= currentDelayAction.Duration;
+            case ActionTypes.SplitAction:
+                currentSplitAction.DoAction();
+                return true;
             default:
                 throw new System.Exception("Not Implemented");
         }
@@ -96,6 +107,9 @@ public class Ammo : MonoBehaviour
                 return;
             case ActionTypes.DelayAction:
                 currentDelayAction.EndAction();
+                return;
+            case ActionTypes.SplitAction:
+                currentSplitAction.EndAction();
                 return;
         }
     }

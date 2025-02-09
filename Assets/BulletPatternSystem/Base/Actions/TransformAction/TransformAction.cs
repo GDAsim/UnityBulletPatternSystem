@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[System.Serializable]
 public partial struct TransformAction : IAction
 {
     public Func<TransformData, float, float, TransformData> Action;
