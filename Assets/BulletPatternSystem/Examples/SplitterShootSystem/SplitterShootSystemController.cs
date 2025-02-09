@@ -11,7 +11,7 @@ public class SplitterShootSystemController : MonoBehaviour
 
     void Awake()
     {
-        var bulletPattern = new IAction[2]
+        var bulletPattern = new IAction[3]
         {
             new TransformAction
             {
@@ -25,6 +25,15 @@ public class SplitterShootSystemController : MonoBehaviour
             new SplitAction
             {
                 DestroyOnEnd = true,
+            },
+             new TransformAction
+            {
+                Duration = 2,
+                StartTime = 0,
+
+                Action = TransformAction.MoveForward,
+                ActionSpeed = ShootPower,
+                IsDeltaAction = true,
             },
         };
         

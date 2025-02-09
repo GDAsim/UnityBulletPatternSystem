@@ -23,14 +23,21 @@ public struct SplitAction : IAction
 
     public void DoAction()
     {
-        var newAmmo = GameObject.Instantiate(main);
+        var newAmmoLeft = GameObject.Instantiate(main);
+        var newAmmoRight = GameObject.Instantiate(main);
+
 
         var mainTransform = new TransformData(main.transform);
 
-        mainTransform.Position += new Vector3(0, 1, 0);
-        mainTransform.ApplyTo(newAmmo.transform);
+        var ammoleftTransform = mainTransform;
+        ammoleftTransform.Rotation *= Quaternion.AngleAxis(-45, main.transform.up);
+        ammoleftTransform.ApplyTo(newAmmoLeft.transform);
+        newAmmoLeft.Setup(main.patterns);
 
-        newAmmo.Setup(main.patterns);
+        var ammorightTransform = mainTransform;
+        ammorightTransform.Rotation *= Quaternion.AngleAxis(45, main.transform.up);
+        ammorightTransform.ApplyTo(newAmmoRight.transform);
+        newAmmoRight.Setup(main.patterns);
     }
     public void EndAction()
     {
