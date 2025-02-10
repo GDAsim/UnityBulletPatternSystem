@@ -3,24 +3,36 @@ using UnityEngine;
 public class Ammo : MonoBehaviour
 {
     public IAction[] patterns { get; private set; }
-    int currentIndex = 0;
+    int currentIndex;
 
     ActionTypes currentActionType;
     TransformAction currentTransformAction;
     DelayAction currentDelayAction;
     SplitAction currentSplitAction;
 
-    float currentActionTimer = 0;
+    float currentActionTimer;
 
-    public void Setup(IAction[] patterns)
+    public void Setup(Ammo ammo)
     {
-        this.patterns = patterns;
+        patterns = ammo.patterns;
+
+        currentIndex = ammo.currentIndex;
+        currentActionTimer = ammo.currentActionTimer;
 
         GetNextAction();
 
         ReadyAction();
+    }
+    public void Setup(IAction[] patterns)
+    {
+        this.patterns = patterns;
 
+        currentIndex = 0;
         currentActionTimer = 0;
+
+        GetNextAction();
+
+        ReadyAction();
     }
 
     void Update()
@@ -114,6 +126,7 @@ public class Ammo : MonoBehaviour
         }
     }
 
+    
 
     void OnTriggerEnter(Collider other)
     {

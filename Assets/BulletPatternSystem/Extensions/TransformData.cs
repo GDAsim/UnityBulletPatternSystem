@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
-[Serializable]
 public struct TransformData
 {
     public Vector3 Position;

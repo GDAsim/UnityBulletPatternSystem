@@ -26,7 +26,7 @@ public class HomingShootSystemController : MonoBehaviour
 
     enum HomingType { Simple, DistanceProximity, LimitedProximity, Accelerated }
 
-    void Start()
+    void Awake()
     {
         if (homingType == HomingType.Simple)
         {

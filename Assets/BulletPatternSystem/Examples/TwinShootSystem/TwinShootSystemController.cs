@@ -11,7 +11,7 @@ public class TwinShootSystemController : MonoBehaviour
 
     enum ShootMode { Normal, Cycle , Helix }
 
-    void Start()
+    void Awake()
     {
         if(shootmode == ShootMode.Normal)
         {

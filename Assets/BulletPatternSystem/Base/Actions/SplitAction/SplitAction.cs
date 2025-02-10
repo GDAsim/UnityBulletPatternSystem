@@ -1,11 +1,12 @@
-
 using UnityEngine;
 
 public struct SplitAction : IAction
 {
-    public bool IsClone; // Copy Current State Over
     public bool DestroyOnEnd;
-    public GameObject splitPrefab;
+    public bool IsClone; // Copy Current State/Vars Over
+
+    public Ammo splitPrefab;
+    public IAction[] splitActions;
     public TransformData splitDelta;
 
     Ammo main;
@@ -19,29 +20,32 @@ public struct SplitAction : IAction
     public void ReadyAction(Ammo main)
     {
         this.main = main;
+
+        if (splitPrefab == null) splitPrefab = main;
+        if (splitActions == null) splitActions = main.patterns;
+        if (splitDelta.Rotation.Equals(default)) splitDelta.Rotation = Quaternion.identity;
     }
 
     public void DoAction()
     {
-        var newAmmoLeft = GameObject.Instantiate(main);
-        var newAmmoRight = GameObject.Instantiate(main);
+        var newAmmo = GameObject.Instantiate(splitPrefab);
 
+        var ammoTransform = new TransformData(main.transform) + splitDelta;
+        ammoTransform.ApplyTo(newAmmo.transform);
 
-        var mainTransform = new TransformData(main.transform);
-
-        var ammoleftTransform = mainTransform;
-        ammoleftTransform.Rotation *= Quaternion.AngleAxis(-45, main.transform.up);
-        ammoleftTransform.ApplyTo(newAmmoLeft.transform);
-        newAmmoLeft.Setup(main.patterns);
-
-        var ammorightTransform = mainTransform;
-        ammorightTransform.Rotation *= Quaternion.AngleAxis(45, main.transform.up);
-        ammorightTransform.ApplyTo(newAmmoRight.transform);
-        newAmmoRight.Setup(main.patterns);
+        if (!IsClone)
+        {
+            newAmmo.Setup(splitActions);
+        }
+        else
+        {
+            newAmmo.Setup(splitPrefab);
+        }
     }
+
     public void EndAction()
     {
-        if(DestroyOnEnd)
+        if (DestroyOnEnd)
         {
             GameObject.Destroy(main.gameObject);
         }
