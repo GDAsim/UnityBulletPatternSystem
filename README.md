@@ -48,3 +48,9 @@ Level 5: Teleport Shoot System
 - Upgrade to support Instant Action (0 Duration Action)
 - Upgrade to support Non Delta Transform Action
 - Different Multiple Teleport Setup
+
+Level 6: Split Shoot System
+- Add Bullets to Spawn new/child Bullets as SplitAction
+- Add TransformDelta to perform and apply to new spawned bullets
+- Add destroy after split
+- Add Copy feature to copy current bullet state over to new/child bullets (+Gives Sync Feature) 
