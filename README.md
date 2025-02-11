@@ -1,23 +1,9 @@
-Bullet Shoot System bullet hell
+Bullet Shoot System
 
-Features:
-1. Basic Adjustable Weapon Stats using Scriptable Objects
-   - Magazine Count
-   - Magazine Capacity
-   - Reload Delay
-   - Shoot Delay
-2. Create Custom Bullet Path
-3. sync bullet
-4. 
-5. Single Shoot System
-- Shoot Delay
-- Reload Delay 
-awsome huh
+Bullet Pattern System done using Script Defined Sequential Action
+Able to achive all types of Bullet Patterns.
 
-
-
-Milestones:
-
+Implementation Milestones:
 Level 1: Spawn & Move
 - Basic Bullet Spawning
 - Editor/Inspector Refrencing
