@@ -43,6 +43,8 @@ public class Ammo : MonoBehaviour
             return;
         }
 
+        currentActionTimer += Time.deltaTime;
+
         if (DoAction())
         {
             EndAction();
@@ -53,8 +55,6 @@ public class Ammo : MonoBehaviour
 
             currentActionTimer = 0;
         }
-
-        currentActionTimer += Time.deltaTime;
     }
 
     void GetNextAction()

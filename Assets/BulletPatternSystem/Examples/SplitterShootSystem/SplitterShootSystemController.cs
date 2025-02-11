@@ -171,9 +171,10 @@ public class SplitterShootSystemController : MonoBehaviour
                     IsClone = true,
                     DestroyOnEnd = true
                 },
+                
                 new TransformAction
                 {
-                    Duration = 3,
+                    Duration = 5,
                     StartTime = 0,
 
                     Action = TransformAction.MoveForward,
