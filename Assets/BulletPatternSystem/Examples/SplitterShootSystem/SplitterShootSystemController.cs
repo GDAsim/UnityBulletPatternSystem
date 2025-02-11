@@ -19,7 +19,13 @@ public class SplitterShootSystemController : MonoBehaviour
     [Header("Clone")]
     [SerializeField] Ammo CloneAmmoPrefab;
 
-    enum SplitType { Extra, Split, Clone, Copy }
+    enum SplitType 
+    { 
+        Extra, // Spawn a new predefined object
+        Split, // Spawn a new predefined object and Destroy Itself
+        Clone, // Spawn a new object as itself
+        Copy // Spawn a new object as itself and copy current state over
+    }
 
     void Awake()
     {
@@ -160,7 +166,6 @@ public class SplitterShootSystemController : MonoBehaviour
                     {
                         Rotation = Quaternion.AngleAxis(45, transform.up),
                     },
-                    IsClone = true,
                 },
                 new SplitAction
                 {
@@ -168,13 +173,10 @@ public class SplitterShootSystemController : MonoBehaviour
                     {
                         Rotation = Quaternion.AngleAxis(-45, transform.up),
                     },
-                    IsClone = true,
-                    DestroyOnEnd = true
                 },
-                
                 new TransformAction
                 {
-                    Duration = 5,
+                    Duration = Mathf.Infinity,
                     StartTime = 0,
 
                     Action = TransformAction.MoveForward,
@@ -203,17 +205,18 @@ public class SplitterShootSystemController : MonoBehaviour
                 {
                     splitDelta = new TransformData()
                     {
-                        Rotation = Quaternion.AngleAxis(45, transform.up),
+                        Rotation = Quaternion.AngleAxis(45 + 45, transform.up),
                     },
+                    IsCopy = true,
                 },
-                new TransformAction
+                new SplitAction
                 {
-                    Duration = Mathf.Infinity,
-                    StartTime = 0,
-
-                    Action = TransformAction.MoveForward,
-                    ActionSpeed = ShootPower,
-                    IsDeltaAction = true,
+                    splitDelta = new TransformData()
+                    {
+                        Rotation = Quaternion.AngleAxis(-45, transform.up),
+                    },
+                    IsCopy = true,
+                    DestroyOnEnd = true
                 },
             };
 

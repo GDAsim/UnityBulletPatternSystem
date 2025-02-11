@@ -3,7 +3,7 @@ using UnityEngine;
 public struct SplitAction : IAction
 {
     public bool DestroyOnEnd;
-    public bool IsClone; // Copy Current State/Vars Over
+    public bool IsCopy; // Copy Current State/Vars Over
 
     public Ammo splitPrefab;
     public IAction[] splitActions;
@@ -33,7 +33,7 @@ public struct SplitAction : IAction
         var ammoTransform = new TransformData(main.transform) + splitDelta;
         ammoTransform.ApplyTo(newAmmo.transform);
 
-        if (!IsClone)
+        if (!IsCopy)
         {
             newAmmo.Setup(splitActions);
         }
