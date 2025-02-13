@@ -59,6 +59,8 @@ public class ShootSystem : MonoBehaviour
     {
         PreShootAction();
 
+        shootTimer += Time.deltaTime;
+
         if (HaveAmmo)
         {
             AttemptShoot();
@@ -98,8 +100,6 @@ public class ShootSystem : MonoBehaviour
 
     void AttemptShoot()
     {
-        shootTimer += Time.deltaTime;
-
         if (shootTimer >= systemStats.ShootDelay)
         {
             shootTimer = 0;
