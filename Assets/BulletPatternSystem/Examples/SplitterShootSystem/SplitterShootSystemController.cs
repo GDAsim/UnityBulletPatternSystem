@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SplitterShootSystemController : MonoBehaviour
 {
-    [SerializeField] ShootSystemData BaseShootSystemStats;
+    [SerializeField] ShootStats BaseShootSystemStats;
     [SerializeField] SplitType splitType;
 
     [SerializeField] ShootSystem Gun;

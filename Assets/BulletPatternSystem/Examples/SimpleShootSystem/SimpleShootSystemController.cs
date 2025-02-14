@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SimpleShootSystemController : MonoBehaviour
 {
-    [SerializeField] ShootSystemData BaseShootSystemStats;
+    [SerializeField] ShootStats BaseShootSystemStats;
 
     [SerializeField] ShootSystem Gun;
 

@@ -3,7 +3,7 @@ using static UnityEngine.Tilemaps.Tilemap;
 
 public class TeleportShootSystem : MonoBehaviour
 {
-    [SerializeField] ShootSystemData BaseShootSystemStats;
+    [SerializeField] ShootStats BaseShootSystemStats;
     [SerializeField] TeleportType teleType;
 
     [SerializeField] ShootSystem Gun;

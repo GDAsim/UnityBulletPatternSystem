@@ -6,7 +6,7 @@ public class ShootSystem : MonoBehaviour
 
     [Header("Optional")]
     [SerializeField] Transform CustomFirePos;
-    ShootSystemData systemStats;
+    ShootStats systemStats;
 
     int currentMagazineCount;
     int currentAmmoCount;
@@ -35,7 +35,7 @@ public class ShootSystem : MonoBehaviour
         actionTimer = -StartSystemDelay;
         if (currentIndex == systemPattern.Length) currentIndex = 0;
     }
-    public void SetupShoot(IAction[] bulletPattern, ShootSystemData shootStats,
+    public void SetupShoot(IAction[] bulletPattern, ShootStats shootStats,
         float StartShootDelay = 0)
     {
         this.bulletPattern = bulletPattern;

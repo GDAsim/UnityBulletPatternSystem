@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TwinShootSystemController : MonoBehaviour
 {
-    [SerializeField] ShootSystemData BaseShootSystemStats;
+    [SerializeField] ShootStats BaseShootSystemStats;
     [SerializeField] float ShootPower = 1;
     [SerializeField] ShootMode shootmode = ShootMode.Cycle;
 

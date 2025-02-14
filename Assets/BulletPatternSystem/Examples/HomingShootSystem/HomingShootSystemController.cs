@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HomingShootSystemController : MonoBehaviour
 {
-    [SerializeField] ShootSystemData BaseShootSystemStats;
+    [SerializeField] ShootStats BaseShootSystemStats;
     [SerializeField] HomingType homingType;
 
     [SerializeField] ShootSystem Gun;

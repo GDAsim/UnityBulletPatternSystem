@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SynchronizedShootSystemController : MonoBehaviour
 {
-    [SerializeField] ShootSystemData BaseShootSystemStats;
+    [SerializeField] ShootStats BaseShootSystemStats;
     [SerializeField] SyncType snycType;
 
     [SerializeField] ShootSystem Gun;
