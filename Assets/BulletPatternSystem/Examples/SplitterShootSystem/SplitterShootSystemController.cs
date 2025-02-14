@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class SplitterShootSystemController : MonoBehaviour
 {
-    [SerializeField] ShootStats BaseShootSystemStats;
+    [SerializeField] GunStats BaseShootSystemStats;
     [SerializeField] SplitType splitType;
 
-    [SerializeField] ShootSystem Gun;
+    [SerializeField] Gun Gun;
 
     [Header("Shoot Properties")]
     [SerializeField] float ShootPower = 2;

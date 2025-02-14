@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class TwinShootSystemController : MonoBehaviour
 {
-    [SerializeField] ShootStats BaseShootSystemStats;
+    [SerializeField] GunStats BaseShootSystemStats;
     [SerializeField] float ShootPower = 1;
     [SerializeField] ShootMode shootmode = ShootMode.Cycle;
 
-    [SerializeField] ShootSystem RightGun;
-    [SerializeField] ShootSystem LeftGun;
+    [SerializeField] Gun RightGun;
+    [SerializeField] Gun LeftGun;
 
     enum ShootMode { Normal, Cycle , Helix }
 

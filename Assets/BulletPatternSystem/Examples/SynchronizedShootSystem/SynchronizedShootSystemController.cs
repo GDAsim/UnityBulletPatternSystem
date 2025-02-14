@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class SynchronizedShootSystemController : MonoBehaviour
 {
-    [SerializeField] ShootStats BaseShootSystemStats;
+    [SerializeField] GunStats BaseShootSystemStats;
     [SerializeField] SyncType snycType;
 
-    [SerializeField] ShootSystem Gun;
+    [SerializeField] Gun Gun;
 
     [Header("Shoot Properties")]
     [SerializeField] float ShootPower = 2;

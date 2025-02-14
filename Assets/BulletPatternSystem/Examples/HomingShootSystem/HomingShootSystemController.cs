@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class HomingShootSystemController : MonoBehaviour
 {
-    [SerializeField] ShootStats BaseShootSystemStats;
+    [SerializeField] GunStats BaseShootSystemStats;
     [SerializeField] HomingType homingType;
 
-    [SerializeField] ShootSystem Gun;
+    [SerializeField] Gun Gun;
 
     [Header("Shoot Properties")]
     [SerializeField] float ShootPower = 2;

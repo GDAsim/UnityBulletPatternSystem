@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class ShootSystem : MonoBehaviour
+public class Gun : MonoBehaviour
 { 
     [SerializeField] Ammo AmmoPrefab;
 
     [Header("Optional")]
     [SerializeField] Transform CustomFirePos;
-    ShootStats systemStats;
+    GunStats systemStats;
 
     int currentMagazineCount;
     int currentAmmoCount;
@@ -35,7 +35,7 @@ public class ShootSystem : MonoBehaviour
         actionTimer = -StartSystemDelay;
         if (currentIndex == systemPattern.Length) currentIndex = 0;
     }
-    public void SetupShoot(IAction[] bulletPattern, ShootStats shootStats,
+    public void SetupShoot(IAction[] bulletPattern, GunStats shootStats,
         float StartShootDelay = 0)
     {
         this.bulletPattern = bulletPattern;
