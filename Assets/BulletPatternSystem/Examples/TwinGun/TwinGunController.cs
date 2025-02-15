@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TwinShootSystemController : MonoBehaviour
+public class TwinGunController : MonoBehaviour
 {
     [SerializeField] GunStats BaseShootSystemStats;
     [SerializeField] float ShootPower = 1;
