@@ -3,6 +3,9 @@ Bullet Shoot System
 Bullet Pattern System done using Script Defined Sequential Action
 Able to achive all types of Bullet Patterns.
 
+Normal Version: https://github.com/GDAsim/UnityBulletPatternSystem
+ECS Version: https://github.com/GDAsim/UnityBulletPatternSystemECS
+
 Implementation Milestones:
 Level 1: Spawn & Move
 - Basic Bullet Spawning
