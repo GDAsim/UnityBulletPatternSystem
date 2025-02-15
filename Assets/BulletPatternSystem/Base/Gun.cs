@@ -35,8 +35,7 @@ public class Gun : MonoBehaviour
         actionTimer = -StartSystemDelay;
         if (currentIndex == systemPattern.Length) currentIndex = 0;
     }
-    public void SetupShoot(IAction[] bulletPattern, GunStats shootStats,
-        float StartShootDelay = 0)
+    public void SetupShoot(IAction[] bulletPattern, GunStats shootStats)
     {
         this.bulletPattern = bulletPattern;
         this.systemStats = shootStats;
@@ -52,7 +51,7 @@ public class Gun : MonoBehaviour
 
         currentMagazineCount = systemStats.MagazineCount;
         currentAmmoCount = systemStats.MagazineCapacity;
-        shootTimer = -StartShootDelay;
+        shootTimer = -shootStats.StartShootDelay;
         reloadTimer = 0;
     }
     void Update()

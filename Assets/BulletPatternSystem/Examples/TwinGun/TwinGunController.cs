@@ -27,11 +27,12 @@ public class TwinGunController : MonoBehaviour
 
             var stats = Instantiate(BaseShootSystemStats);
 
-            var leftGunShootDelay = stats.ShootDelay;
+            RightGun.SetupShoot(bulletPattern, stats);
+
+            stats.StartShootDelay = 1;
             stats.ShootDelay *= 2;
 
-            RightGun.SetupShoot(bulletPattern, stats);
-            LeftGun.SetupShoot(bulletPattern, stats, leftGunShootDelay);
+            LeftGun.SetupShoot(bulletPattern, stats);
         }
         else if (shootmode == ShootMode.Helix)
         {
