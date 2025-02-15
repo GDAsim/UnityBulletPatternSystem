@@ -9,11 +9,11 @@ public class TwinGunController : MonoBehaviour
     [SerializeField] Gun RightGun;
     [SerializeField] Gun LeftGun;
 
-    enum ShootMode { Normal, Cycle , Helix }
+    enum ShootMode { Normal, Cycle, Helix }
 
     void Awake()
     {
-        if(shootmode == ShootMode.Normal)
+        if (shootmode == ShootMode.Normal)
         {
             var bulletPattern = BulletPatterns.Straight(ShootPower);
 
@@ -26,18 +26,18 @@ public class TwinGunController : MonoBehaviour
             var bulletPattern = BulletPatterns.Straight(ShootPower);
 
             var stats = Instantiate(BaseShootSystemStats);
+            stats.ShootDelay *= 2;
 
             RightGun.SetupShoot(bulletPattern, stats);
 
             stats.StartShootDelay = 1;
-            stats.ShootDelay *= 2;
 
             LeftGun.SetupShoot(bulletPattern, stats);
         }
         else if (shootmode == ShootMode.Helix)
         {
-            var LeftbulletPattern = BulletPatterns.Sine(ShootPower, Vector3.left, 0.2f);
             var RightbulletPattern = BulletPatterns.Sine(ShootPower, Vector3.right, 0.2f);
+            var LeftbulletPattern = BulletPatterns.Sine(ShootPower, Vector3.left, 0.2f);
 
             var stats = Instantiate(BaseShootSystemStats);
 
