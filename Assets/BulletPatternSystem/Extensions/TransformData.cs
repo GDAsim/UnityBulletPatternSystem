@@ -29,7 +29,7 @@ public struct TransformData
     public static TransformData operator -(TransformData left, TransformData right)
     {
         left.Position -= right.Position;
-        left.Rotation = left.Rotation * Quaternion.Inverse(right.Rotation);
+        left.Rotation =  Quaternion.Inverse(right.Rotation) * left.Rotation ;
         left.Scale -= right.Scale;
         return left;
     }
