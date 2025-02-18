@@ -189,11 +189,12 @@ public class HomingShootSystemController : MonoBehaviour
             startData.Rotation = Quaternion.RotateTowards(startData.Rotation, Quaternion.LookRotation(dirToPlayer), HomingRate * (speed * time));
 
             // Linear Acceleration growth based on distance
-            var forwardSpeed = speed * Mathf.Clamp(AcceleratedRadius / Vector3.Distance(startData.Position, homingTarget.position), 1, AccelerationMulti);
-            Vector3 forward = startData.Rotation * Vector3.forward * (forwardSpeed * time);
-
-            startData.Position = startData.Position + forward;
+            speed = speed * Mathf.Clamp(AcceleratedRadius / Vector3.Distance(startData.Position, homingTarget.position), 1, AccelerationMulti);
         }
+
+        Vector3 forward = startData.Rotation * Vector3.forward * (speed * time);
+
+        startData.Position = startData.Position + forward;
 
         return startData;
     }

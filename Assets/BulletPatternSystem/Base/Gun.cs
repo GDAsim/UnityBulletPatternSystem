@@ -30,10 +30,10 @@ public class Gun : MonoBehaviour
     {
         this.systemPattern = systemPattern;
 
-        currentAction = systemPattern[currentIndex++];
+        currentAction = systemPattern[currentIndex];
         currentAction.ReadyAction(transform);
         actionTimer = -StartSystemDelay;
-        if (currentIndex == systemPattern.Length) currentIndex = 0;
+        if (++currentIndex == systemPattern.Length) currentIndex = 0;
     }
     public void SetupShoot(IAction[] bulletPattern, GunStats shootStats)
     {
@@ -87,10 +87,10 @@ public class Gun : MonoBehaviour
         {
             currentAction.EndAction();
 
-            currentAction = systemPattern[currentIndex++];
+            currentAction = systemPattern[currentIndex];
             currentAction.ReadyAction(transform);
             actionTimer = 0;
-            if (currentIndex == systemPattern.Length) currentIndex = 0;
+            if (++currentIndex == systemPattern.Length) currentIndex = 0;
         }
 
         currentAction.DoAction(dt);
