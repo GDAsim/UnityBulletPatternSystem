@@ -16,24 +16,28 @@ public class Gun : MonoBehaviour
     bool HaveMag => currentMagazineCount > 0;
     public int TotalShootCount { get; set; }
 
-    TransformAction[] systemPattern;
-    int currentIndex = 0;
+    public IAction[] Patterns { get; private set; }
+    int currentIndex;
 
-    TransformAction currentAction;
-    float actionTimer = 0;
+    ActionTypes currentActionType;
+    TransformAction currentTransformAction;
+    DelayAction currentDelayAction;
+    //SplitAction currentSplitAction;
+
+    float currentActionTimer;
 
     IAction[] bulletPattern;
     Transform firetransform;
 
-    public void SetupPreShoot(TransformAction[] systemPattern,
+    public void SetupPreShoot(IAction[] patterns,
         float StartSystemDelay = 0)
     {
-        this.systemPattern = systemPattern;
+        Patterns = patterns;
+        currentActionTimer = -StartSystemDelay;
 
-        currentAction = systemPattern[currentIndex];
-        currentAction.ReadyAction(transform);
-        actionTimer = -StartSystemDelay;
-        if (++currentIndex == systemPattern.Length) currentIndex = 0;
+        GetNextAction();
+
+        ReadyAction();
     }
     public void SetupShoot(IAction[] bulletPattern, GunStats shootStats)
     {
@@ -75,26 +79,88 @@ public class Gun : MonoBehaviour
 
     void PreShootAction()
     {
-        if (systemPattern == null || systemPattern.Length == 0)
+        if (Patterns == null || Patterns.Length == 0) return;
+
+        currentActionTimer += Time.deltaTime;
+
+        if (DoAction())
         {
-            //Debug.LogWarning("No System Pattern Set", this);
-            return;
+            EndAction();
+
+            GetNextAction();
+
+            ReadyAction();
+
+            currentActionTimer = 0;
+        }
+    }
+
+    void GetNextAction()
+    {
+        switch (Patterns[currentIndex])
+        {
+            case TransformAction action:
+                currentTransformAction = action;
+                currentActionType = ActionTypes.TransformAction;
+                break;
+            case DelayAction action:
+                currentDelayAction = action;
+                currentActionType = ActionTypes.DelayAction;
+                break;
+            //case SplitAction action:
+            //    currentSplitAction = action;
+            //    currentActionType = ActionTypes.SplitAction;
+            //    break;
         }
 
-        var dt = Time.deltaTime;
-
-        if (actionTimer >= currentAction.Duration && currentAmmoCount > 0)
+        if (++currentIndex == Patterns.Length) currentIndex = 0;
+    }
+    void ReadyAction()
+    {
+        switch (currentActionType)
         {
-            currentAction.EndAction();
-
-            currentAction = systemPattern[currentIndex];
-            currentAction.ReadyAction(transform);
-            actionTimer = 0;
-            if (++currentIndex == systemPattern.Length) currentIndex = 0;
+            case ActionTypes.TransformAction:
+                currentTransformAction.ReadyAction(transform);
+                return;
+            case ActionTypes.DelayAction:
+                currentDelayAction.ReadyAction();
+                return;
+            //case ActionTypes.SplitAction:
+            //    currentSplitAction.ReadyAction(this);
+            //    return;
         }
-
-        currentAction.DoAction(dt);
-        actionTimer += dt;
+    }
+    bool DoAction()
+    {
+        switch (currentActionType)
+        {
+            case ActionTypes.TransformAction:
+                currentTransformAction.DoAction(Time.deltaTime);
+                return currentActionTimer >= currentTransformAction.Duration;
+            case ActionTypes.DelayAction:
+                currentDelayAction.DoAction();
+                return currentActionTimer >= currentDelayAction.Duration;
+            //case ActionTypes.SplitAction:
+            //    currentSplitAction.DoAction();
+            //    return true;
+            default:
+                throw new System.Exception("Not Implemented");
+        }
+    }
+    void EndAction()
+    {
+        switch (currentActionType)
+        {
+            case ActionTypes.TransformAction:
+                currentTransformAction.EndAction();
+                return;
+            case ActionTypes.DelayAction:
+                currentDelayAction.EndAction();
+                return;
+            //case ActionTypes.SplitAction:
+            //    currentSplitAction.EndAction();
+            //    return;
+        }
     }
 
     void AttemptShoot()

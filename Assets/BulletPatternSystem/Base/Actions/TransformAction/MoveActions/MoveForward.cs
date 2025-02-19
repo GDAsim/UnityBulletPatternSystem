@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Basic Transform Action
+/// Basic Transform Actions
 /// </summary>
 public partial struct TransformAction
 {

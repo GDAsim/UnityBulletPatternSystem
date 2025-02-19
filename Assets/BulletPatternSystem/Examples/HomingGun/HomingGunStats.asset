@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf7fad5ead327334ea86b83509afbc2a, type: 3}
-  m_Name: SplitterShootStats
+  m_Name: HomingGunStats
   m_EditorClassIdentifier: 
-  MagazineCount: 1
-  MagazineCapacity: 1
-  ReloadDelay: 1.23131126e+11
+  MagazineCount: 2147483647
+  MagazineCapacity: 2147483647
+  ReloadDelay: 0
   ShootDelay: 1
+  Power: 5
+  StartShootDelay: 0

@@ -22,7 +22,7 @@ public struct SplitAction : IAction
         this.main = main;
 
         if (splitPrefab == null) splitPrefab = main;
-        if (splitActions == null) splitActions = main.patterns;
+        if (splitActions == null) splitActions = main.Patterns;
         if (splitDelta.Rotation.Equals(default)) splitDelta.Rotation = Quaternion.identity;
     }
 

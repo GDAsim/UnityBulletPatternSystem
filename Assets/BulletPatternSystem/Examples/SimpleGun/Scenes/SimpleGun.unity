@@ -781,8 +781,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseStats: {fileID: 11400000, guid: 4c6f4159d51219d4f8e1f6f268063940, type: 2}
+  patternSelect: 1
   gun: {fileID: 1038185412}
-  PatternSelect: 1
 --- !u!65 &2082246404
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1114,8 +1114,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseStats: {fileID: 11400000, guid: 4c6f4159d51219d4f8e1f6f268063940, type: 2}
+  patternSelect: 0
   gun: {fileID: 5763387568809429684}
-  PatternSelect: 0
 --- !u!4 &6870957675074910469
 Transform:
   m_ObjectHideFlags: 0

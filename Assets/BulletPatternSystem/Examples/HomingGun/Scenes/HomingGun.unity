@@ -336,13 +336,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c459b10ce8cd0f344b07bb75f76d561a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseShootSystemStats: {fileID: 11400000, guid: c1f1dbe925cf3da4fadaebab78ad4729, type: 2}
-  homingType: 3
-  Gun: {fileID: 417607714}
-  ShootPower: 5
+  baseStats: {fileID: 11400000, guid: c1f1dbe925cf3da4fadaebab78ad4729, type: 2}
+  patternSelect: 3
+  gun: {fileID: 417607714}
   homingTarget: {fileID: 1130582486}
   HomingRate: 15
-  ProximityDistance: 50
+  ProximityDistance: 30
   LimitedProximityFactor: 1.5
   AcceleratedRadius: 50
   AccelerationMulti: 3
@@ -716,13 +715,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c459b10ce8cd0f344b07bb75f76d561a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseShootSystemStats: {fileID: 11400000, guid: c1f1dbe925cf3da4fadaebab78ad4729, type: 2}
-  homingType: 2
-  Gun: {fileID: 952807132}
-  ShootPower: 5
+  baseStats: {fileID: 11400000, guid: c1f1dbe925cf3da4fadaebab78ad4729, type: 2}
+  patternSelect: 3
+  gun: {fileID: 952807132}
   homingTarget: {fileID: 1049008132}
   HomingRate: 15
-  ProximityDistance: 50
+  ProximityDistance: 30
   LimitedProximityFactor: 1.5
   AcceleratedRadius: 50
   AccelerationMulti: 3
@@ -1800,10 +1798,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c459b10ce8cd0f344b07bb75f76d561a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseShootSystemStats: {fileID: 11400000, guid: c1f1dbe925cf3da4fadaebab78ad4729, type: 2}
-  homingType: 1
-  Gun: {fileID: 699087972}
-  ShootPower: 5
+  baseStats: {fileID: 11400000, guid: c1f1dbe925cf3da4fadaebab78ad4729, type: 2}
+  patternSelect: 1
+  gun: {fileID: 699087972}
   homingTarget: {fileID: 524351406}
   HomingRate: 15
   ProximityDistance: 30
@@ -2250,13 +2247,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c459b10ce8cd0f344b07bb75f76d561a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseShootSystemStats: {fileID: 11400000, guid: c1f1dbe925cf3da4fadaebab78ad4729, type: 2}
-  homingType: 0
-  Gun: {fileID: 5763387568809429684}
-  ShootPower: 5
+  baseStats: {fileID: 11400000, guid: c1f1dbe925cf3da4fadaebab78ad4729, type: 2}
+  patternSelect: 0
+  gun: {fileID: 5763387568809429684}
   homingTarget: {fileID: 67336622}
   HomingRate: 15
-  ProximityDistance: 50
+  ProximityDistance: 30
   LimitedProximityFactor: 1.5
   AcceleratedRadius: 50
   AccelerationMulti: 3

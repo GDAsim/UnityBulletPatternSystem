@@ -7,7 +7,6 @@ using UnityEngine;
 public struct DelayAction : IAction
 {
     public Func<bool> DelayUntil;
-
     public float Duration;
 
     #region Interface
@@ -16,11 +15,7 @@ public struct DelayAction : IAction
     float IAction.StartTimer { get => 0; }
     #endregion
 
-    public void ReadyAction()
-    {
-        
-    }
-
+    public void ReadyAction() { }
     public void DoAction()
     {
         if (DelayUntil != null)
@@ -36,8 +31,5 @@ public struct DelayAction : IAction
         }
     }
 
-    public void EndAction()
-    {
-
-    }
+    public void EndAction() { }
 }

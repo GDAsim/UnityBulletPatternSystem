@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Ammo : MonoBehaviour
 {
-    public IAction[] patterns { get; private set; }
+    public IAction[] Patterns { get; private set; }
     int currentIndex;
 
     ActionTypes currentActionType;
@@ -14,7 +14,7 @@ public class Ammo : MonoBehaviour
 
     public void Setup(Ammo ammo)
     {
-        patterns = ammo.patterns;
+        Patterns = ammo.Patterns;
 
         currentIndex = ammo.currentIndex;
         currentActionTimer = ammo.currentActionTimer;
@@ -25,7 +25,7 @@ public class Ammo : MonoBehaviour
     }
     public void Setup(IAction[] patterns)
     {
-        this.patterns = patterns;
+        Patterns = patterns;
 
         currentIndex = 0;
         currentActionTimer = 0;
@@ -37,11 +37,7 @@ public class Ammo : MonoBehaviour
 
     void Update()
     {
-        if (patterns == null || patterns.Length == 0)
-        {
-            //Debug.LogWarning("No Pattern Set", this);
-            return;
-        }
+        if (Patterns == null || Patterns.Length == 0) return;
 
         currentActionTimer += Time.deltaTime;
 
@@ -59,7 +55,7 @@ public class Ammo : MonoBehaviour
 
     void GetNextAction()
     {
-        switch (patterns[currentIndex])
+        switch (Patterns[currentIndex])
         {
             case TransformAction action:
                 currentTransformAction = action;
@@ -75,9 +71,8 @@ public class Ammo : MonoBehaviour
                 break;
         }
 
-        if (++currentIndex == patterns.Length) currentIndex = 0;
+        if (++currentIndex == Patterns.Length) currentIndex = 0;
     }
-
     void ReadyAction()
     {
         switch (currentActionType)
@@ -125,8 +120,6 @@ public class Ammo : MonoBehaviour
                 return;
         }
     }
-
-    
 
     void OnTriggerEnter(Collider other)
     {

@@ -14,8 +14,6 @@ public interface IAction
     /// Start the timer with a value. Used for certain Action
     /// </summary>
     public float StartTimer { get; }
-
-    public void EndAction();
 }
 
 public enum ActionTypes

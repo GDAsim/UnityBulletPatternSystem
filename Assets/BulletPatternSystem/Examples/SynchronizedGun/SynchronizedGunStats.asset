@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf7fad5ead327334ea86b83509afbc2a, type: 3}
-  m_Name: Shotgun
+  m_Name: SynchronizedGunStats
   m_EditorClassIdentifier: 
   MagazineCount: 2147483647
   MagazineCapacity: 4
